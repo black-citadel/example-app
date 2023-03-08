@@ -1,0 +1,34 @@
+_format_version: "3.0"
+_transform: true
+
+services:
+  - name: auth-register
+    url: http://auth:3000/register
+    routes:
+      - name: auth-register
+        methods:
+          - "POST"
+          - "OPTIONS"
+        paths:
+          - /register
+        plugins:
+          - name: cors
+            enabled: true
+            config:
+              methods:
+                - "POST"
+  - name: auth-login
+    url: http://auth:3000/login
+    routes:
+      - name: auth-login
+        methods:
+          - "POST"
+          - "OPTIONS"
+        paths:
+          - /login
+        plugins:
+          - name: cors
+            enabled: true
+            config:
+              methods:
+                - "POST"

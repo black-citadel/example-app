@@ -1,0 +1,19 @@
+version: '3.2'
+
+services:
+  api:
+    build:
+      context: ./platform/api-gateway
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - type: bind
+        source: ./configs/api-gateway/kong.yaml
+        target: /etc/kong/kong.yml
+  collector:
+    build:
+      context: ./platform/opentelemetry-collector
+  auth:
+    build:
+      context: ./platform/auth
