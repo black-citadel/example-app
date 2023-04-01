@@ -6,6 +6,8 @@ receivers:
 
 exporters:
   logging:
+  otlp:
+    endpoint: "collector.blackcitadel.io:443"
 
 processors:
   batch:
@@ -23,12 +25,12 @@ service:
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [logging]
+      exporters: [logging, otlp]
     metrics:
       receivers: [otlp]
       processors: [batch]
-      exporters: [logging]
+      exporters: [logging, otlp]
     logs:
       receivers: [otlp]
       processors: [batch]
-      exporters: [logging]
+      exporters: [logging, otlp]
